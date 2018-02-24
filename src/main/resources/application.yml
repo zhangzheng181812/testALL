@@ -1,0 +1,167 @@
+server:
+  port: 8081
+  contextPath: /
+  session:
+    timeout: 1800
+#  error:
+#    path: /error.html
+
+#spring配置
+spring:
+  mvc:
+#      static-path-pattern: /static/**
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/zhangz?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        maxLifetime: 1765000 #一个连接的生命时长（毫秒），超时而且没被使用则被释放（retired），缺省:30分钟，建议设置比数据库超时时长少30秒以上
+        maximumPoolSize: 15 #连接池中允许的最大连接数。缺省值：10；推荐的公式：((core_count * 2) + effective_spindle_count)
+        minimumIdle:  1 #连接池中允许的最小空闲连接数
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+
+#模版引擎
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    #mode: LEGACYHTML5
+
+#mybatis
+mybatis:
+  mapperLocations: classpath*:com/demo/mapper/*Mapper.xml
+  typeAliasesPackage: com.zhx.huizhifu.web
+
+
+
+banner:
+  location: banner.txt
+
+#配置属性
+site:
+  name: 测试配置文件
+#redis
+jedis:
+  pool:
+    host: 10.6.4.154
+    port: 6379
+    password: foobared
+    database: 9
+    config:
+      maxTotal: 50
+      maxIdle: 10
+      maxWaitMillis: 15000
+
+
+user:
+  wxUserKey: G6K7pOW69eFSuu2RtbHoUirTOSaez9AeyXTHxuaWgaO
+
+redis:
+  giftTemplateMsgSuffix: gifttemplatemsgsuffix
+
+zihexin:
+  businessServerKEY: 12345
+  businessServerURL: http://10.6.4.154:8081
+  businessServerURLW: http://114.255.22.47:8081
+  serverURL: http://9askpr.natappfree.cc
+api:
+ uri:
+  cardsearch: /app/cardsearch
+  createordernew: /app/createordernew
+  payorder: /app/payorder
+  orderdetail: /app/orderdetail
+  defaulpage: /app/wx_defaulpage
+  goodsinfo: /app/goodsinfo
+  goodsmerlist: /app/goodsmerlist
+  writeorder: /app/writeorder
+  mycardlist: /app/mycardlist
+  topay: /app/toPay
+  brandgoodslist: /app/brandgoodslist
+  commentlist: /app/commentlist
+  carddetail: /app/carddetail
+  ecarddetail: /app/ecarddetail
+  selorderlist: /app/selorderlist
+  giftlist: /app/giftlist
+  cardqrcode: /app/cardqrcode
+  setecardtag: /app/setecardtag
+  updategiftliststatus: /app/updategiftliststatus
+  giftdetail: /app/giftdetail
+  getsendgiftcount: /app/getsendgiftcount
+  sendgift: /app/sendgift
+  getgift: /app/getgift
+  selgiftinfo: /app/selgiftinfo
+  searchdeliverycode: /app/searchdeliverycode
+  usedeliverycode: /app/usedeliverycode
+  my: /app/my
+  getverificationcode: /app/getverificationcode
+  tomybanklist: /app/tomybanklist
+  getattention: /app/getattention
+  login: /app/login
+  deleteorder: /app/salesprocess/deleteorderno
+  rategoods: /app/rategoods
+
+wechat:
+  appId: wxadd56a456ef8f004
+  secret: f8f56fdcd8bad9b7eb0419c977bc4457
+  token: weixin
+  aesKey: G6K7pOW69eFSuu2RtbHoUirTOSaez9AeyXTHxuaWgaO
+  templateIdOfGift: 5caGqf22XpV0BPoStf3tk3OsH7mEGncEHDMMKaPfJuw
+  #################################################################
+  #获取access_token
+  gettokenurl: https://api.weixin.qq.com/cgi-bin/token
+  #获取微信服务器IP地址
+  getcallbackip: https://api.weixin.qq.com/cgi-bin/getcallbackip
+  #创建菜单
+  menucreate: https://api.weixin.qq.com/cgi-bin/menu/create
+  #删除菜单
+  menudelete: https://api.weixin.qq.com/cgi-bin/menu/delete
+  #网页授权地址
+  authorizeURL: https://open.weixin.qq.com/connect/oauth2/authorize
+  #code获取access_token地址
+  snsGetTokenURL: https://api.weixin.qq.com/sns/oauth2/access_token
+  #获取用户信息地址
+  getUserInfoURL: https://api.weixin.qq.com/cgi-bin/user/info
+  #获取用户信息地址
+  getSNSUserInfoURL: https://api.weixin.qq.com/sns/userinfo
+  #获取JSAPI_ticket
+  getJSAPITicketURL: https://api.weixin.qq.com/cgi-bin/ticket/getticket
+  #创建门店URL
+  createpoiURL: http://api.weixin.qq.com/cgi-bin/poi/addpoi
+  #上传图片
+  uploadimgURL: https://api.weixin.qq.com/cgi-bin/media/uploadimg
+  #创建卡券
+  createCardURL: https://api.weixin.qq.com/card/create
+  #更新卡券
+  updateCardURL: https://api.weixin.qq.com/card/update
+  #删除卡券
+  deleteCardURL: https://api.weixin.qq.com/card/delete
+  #发送模板消息
+  sendTempMsgURL: https://api.weixin.qq.com/cgi-bin/message/template/send
+  #查询code
+  queryCodeURL: https://api.weixin.qq.com/card/code/get
+  #核销code
+  writeOffCodeURL: https://api.weixin.qq.com/card/code/consume
+  #核销更新会员卡信
+  updateMemberCardURL: https://api.weixin.qq.com/card/membercard/updateuser
+  #解码code
+  codeDecryptURL: https://api.weixin.qq.com/card/code/decrypt
+  #卡券失效
+  unavailableURL: https://api.weixin.qq.com/card/code/unavailable
+  #更改code
+  updateCodeURL: https://api.weixin.qq.com/card/code/update
+  #导入code
+  depositCodeURL: https://api.weixin.qq.com/card/code/deposit
+  #激活会员卡
+  activateMembercardURL: https://api.weixin.qq.com/card/membercard/activate
+  #获取会员卡信息
+  memberCardInfoURL: https://api.weixin.qq.com/card/membercard/userinfo/get
+
+
+
